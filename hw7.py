@@ -1,0 +1,31 @@
+from random import randint
+
+def generate_list(x1, x2, count, stt):
+        for i in range(count):
+                stt.append(randint(x1, x2))
+
+def calculate_nums(stt, ddd):
+        global result
+        for x in stt:
+                ddd[x] = ddd.get(x, 0) + 1
+
+        result = {num: cocount for num, cocount in dict.items() if cocount > 0}
+
+spisok = []
+dict = {}
+result = {}
+count = int(input("Enter count numbers for generate: "))
+min = int(input("Enter start number for generate: "))
+max = int(input("Enter finish number for generate: "))
+if min > max:
+        min, max = max, min
+
+generate_list(min, max, count, spisok)
+
+print(spisok)
+
+calculate_nums(spisok, dict)
+
+for x in sorted(result):
+    print("number %d get %d times" % (x, result[x]))
+
